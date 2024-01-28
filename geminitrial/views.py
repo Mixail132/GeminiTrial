@@ -1,14 +1,4 @@
-import os
-from dotenv import load_dotenv
-
-
-load_dotenv()
-API_KEY = os.getenv("GOOGLE_API_KEY")
-os.environ['GOOGLE_API_KEY'] = API_KEY
-
-
-import google.generativeai as genai
-model = genai.GenerativeModel("gemini-pro")
+from models import model
 
 
 def gemini_ai(prompt):
