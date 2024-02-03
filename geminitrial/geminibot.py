@@ -1,12 +1,7 @@
-# This bot uses Gemini to answer any questions
-import os
+# This a trial bot called 'checker' that uses Gemini to answer any questions
 import time
-import telebot
 from views import gemini_ai
-
-
-token = os.getenv('TELEGRAM_TOKEN')
-bot = telebot.TeleBot(token)
+from botsettings import bot
 
 
 @bot.message_handler(commands=['start'])
