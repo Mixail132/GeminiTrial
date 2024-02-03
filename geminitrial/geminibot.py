@@ -1,11 +1,10 @@
+# This bot uses Gemini to answer any questions
 import os
 import time
 import telebot
 from views import gemini_ai
-from dotenv import load_dotenv
 
 
-load_dotenv()
 token = os.getenv('TELEGRAM_TOKEN')
 bot = telebot.TeleBot(token)
 
@@ -22,6 +21,7 @@ def text(message):
     uid=message.chat.id
     question = message.text
     answer = gemini_ai(question)
+    print(message.from_user.first_name)
     bot.send_message(uid, answer)
 
 
