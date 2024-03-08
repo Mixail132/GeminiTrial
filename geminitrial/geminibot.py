@@ -1,6 +1,6 @@
 # This a trial bot called 'checker' that uses Gemini to answer any questions
 import time
-from views import gemini_ai
+import requests
 from botsettings import bot
 
 
@@ -13,11 +13,12 @@ def start(message):
 
 @bot.message_handler(content_types=['text'])
 def text(message):
-    uid=message.chat.id
+    uid = message.chat.id
+    url = "http://mixail132.pythonanywhere.com"
     question = message.text
-    answer = gemini_ai(question)
-    print(message.from_user.first_name)
-    bot.send_message(uid, answer)
+    json = {"question": question}
+    answer = requests.post(url=url, json=json)
+    bot.send_message(uid, answer.text.encode().decode('unicode_escape'))
 
 
 bot.infinity_polling(
