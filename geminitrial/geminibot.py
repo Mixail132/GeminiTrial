@@ -16,9 +16,10 @@ def text(message):
     uid = message.chat.id
     url = "http://mixail132.pythonanywhere.com"
     question = message.text
-    json = {"question": question}
-    answer = requests.post(url=url, json=json)
-    bot.send_message(uid, answer.text.encode().decode('unicode_escape'))
+    data = {"question": question}
+    answer = requests.post(url=url, json=data)
+    answer = answer.json()
+    bot.send_message(uid, answer['answer'])
 
 
 bot.infinity_polling(
