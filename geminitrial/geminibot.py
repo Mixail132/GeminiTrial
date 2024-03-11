@@ -25,9 +25,13 @@ def text(message):
     :return: None
     """
     uid = message.chat.id
-    url = "http://mixail132.pythonanywhere.com"
+    url = "http://mixail132.pythonanywhere.com/askgpt"
     question = message.text
     data = {"question": question}
+    answer = requests.post(url=url, json=data)
+    answer = answer.json()
+    bot.send_message(uid, answer['answer'])
+    url = "http://mixail132.pythonanywhere.com/askgemini"
     answer = requests.post(url=url, json=data)
     answer = answer.json()
     bot.send_message(uid, answer['answer'])
