@@ -30,11 +30,11 @@ def text(message):
     data = {"question": question}
     answer = requests.post(url=url, json=data)
     answer = answer.json()
-    bot.send_message(uid, answer['answer'])
+    bot.send_message(uid, f"GPT:\n{answer['answer']}")
     url = "http://mixail132.pythonanywhere.com/askgemini"
     answer = requests.post(url=url, json=data)
     answer = answer.json()
-    bot.send_message(uid, answer['answer'])
+    bot.send_message(uid, f"Gemini:\n{answer['answer']}")
 
 
 bot.infinity_polling(
