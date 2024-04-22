@@ -19,5 +19,5 @@ After that the bot takes the answer from the network and issues it to the user.
 | pyproject.toml | - all the project poetry data            |
 | geminitrial    | - project logic files                    |
 | bot.py         | - Telegram bot logic                     |
-| models.py      | - AI model's settings                    |
+| models.py      | - The AI model's settings                |
 | views.py       | - the project logic                      |
